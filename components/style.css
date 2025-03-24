@@ -918,7 +918,7 @@
     animation-play-state: paused;
   }
   
-  /* Add this to your existing responsive styles */
+ 
   @media (max-width: 768px) {
     .skill-item {
       min-width: 70px;
@@ -929,3 +929,22 @@
       height: 35px;
     }
   }
+
+  section {
+    font-size: 2.2rem; /* Slightly bigger text */
+    line-height: 1.6;  /* Better spacing */
+}
+
+h1 {
+    font-size: 2.8rem; 
+    font-weight: bold;
+}
+
+ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li {
+    font-size: 2.1rem;
+}

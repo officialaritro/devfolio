@@ -141,15 +141,15 @@
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Resume</a>
+            <a href=".\resume\Resume_AritroRoy_2025.pdf" class="navbar-link">Resume</a>
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Services</a>
+            <a href="#fun-stuff" class="navbar-link">Fun Stuff</a>
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Portfolio</a>
+            <a href="#portfolio" class="navbar-link">Portfolio</a>
           </li>
 
           <li>
@@ -157,7 +157,7 @@
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Contact</a>
+            <a href="#contact" class="navbar-link">Contact</a>
           </li>
 
         </ul>
@@ -194,7 +194,7 @@
               Developer by day, musician by night.
             </p>
 
-            <a href="./resume/AritroRoy_Resume_2024.pdf" class="btn has-before">
+            <a href=".\resume\Resume_AritroRoy_2025.pdf" class="btn has-before">
               <span class="span">Download CV</span>
 
               <ion-icon name="download-outline" aria-hidden="true"></ion-icon>
@@ -251,113 +251,317 @@
       </section>
 
       <!-- 
-        - #SKILLS
-      -->
+  - #SKILLS (Replaced with Bug Fixing Game and Algorithm Visualizer)
+-->
 
-      <section class="section skills" aria-label="our skills">
-        <div class="container">
+<section id="fun-stuff" class="section skills" aria-label="my skills">
+  <div class="container">
 
-          <p class="section-subtitle">I Make The Future</p>
+    <h2 class="h2 section-title">Interactive Coding Challenges</h2>
 
-          <h2 class="h2 section-title">I Develop & Create Digital Future.</h2>
-
-          <div class="skills-wrapper">
-
-            <div>
-              <p class="section-text">
-                Pellentesque magna magna semper dapibus felis necatin aliuen risus. Pellentesque habitant morbi senectus
-                dictum.
-              </p>
-
-              <p class="section-text">
-                Web design magna magna semper dapibus felis necatin aliuen risus. Pellentesque habitant morbi tristique
-                senectus the neuse malesuada nullam ac lorem miss the duru.
-              </p>
-
-              <a href="#" class="btn has-before">info@kwilliams.com</a>
-            </div>
-
-            <div>
-
-              <ul class="skills-list">
-
-                <li>
-                  <div class="progress-wrapper">
-                    <p class="progress-label">Design</p>
-
-                    <data class="progress-value" value="90">90%</data>
-                  </div>
-
-                  <div class="progress-bg">
-                    <div class="progress" style="width: 90%;"></div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="progress-wrapper">
-                    <p class="progress-label">Branding</p>
-
-                    <data class="progress-value" value="80">80%</data>
-                  </div>
-
-                  <div class="progress-bg">
-                    <div class="progress" style="width: 80%;"></div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="progress-wrapper">
-                    <p class="progress-label">Web Design</p>
-
-                    <data class="progress-value" value="95">95%</data>
-                  </div>
-
-                  <div class="progress-bg">
-                    <div class="progress" style="width: 95%;"></div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="progress-wrapper">
-                    <p class="progress-label">Social Media</p>
-
-                    <data class="progress-value" value="85">85%</data>
-                  </div>
-
-                  <div class="progress-bg">
-                    <div class="progress" style="width: 85%;"></div>
-                  </div>
-                </li>
-
-              </ul>
-
-            </div>
-
-          </div>
-
+    <div class="skills-wrapper">
+      <div class="game-container">
+        <h3 class="h3">Debug & Fix The Code</h3>
+        <div class="code-display">
+          <code id="buggy-code"></code>
         </div>
-      </section>
+        
+        <div class="input-area">
+          <!-- Replace input with textarea to allow multi-line input -->
+          <textarea id="user-fix" placeholder="Enter your fix here" class="code-input"></textarea>
+          <!-- Remove the button from here if using the version with buttons below -->
+        </div>
+        
+        <p id="feedback" class="feedback-text"></p>
+        
+        <div class="game-controls">
+          <!-- Add the Submit Fix button here, next to the white line -->
+          <button onclick="checkFix()" class="btn has-before submit-fix">
+            <span class="span">Submit Fix</span>
+            <ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon>
+          </button>
+          <!-- Small gap between buttons -->
+          <div style="width: 150px;"></div>
+          <button onclick="nextBug()" class="btn has-before">
+            <span class="span">Next Bug</span>
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="algo-visualizer">
+        <h3 class="h3">Algorithm Visualizer</h3>
+        <div class="bars-container" id="bars"></div>
+        <button onclick="startBubbleSort()" class="btn has-before">
+          <span class="span">Visualize Sort</span>
+          <ion-icon name="play-outline" aria-hidden="true"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .game-container, .algo-visualizer {
+    background-color: var(--bg-oxford-blue-2, #121212);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .game-container h3, .algo-visualizer h3 {
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .code-display {
+    background-color: var(--bg-oxford-blue-3, #1e1e1e);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    text-align: left;
+    position: relative;
+    overflow-x: auto;
+  }
+
+  .code-display code {
+    color: var(--text-white, #ffffff);
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .input-area {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .code-input {
+    flex: 1;
+    background-color: var(--bg-oxford-blue-3, #1e1e1e);
+    border: 1px solid var(--border-space-cadet, #2a2a2a);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: var(--text-white, #ffffff);
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    min-height: 100px; 
+    resize: vertical; 
+  }
+
+  .feedback-text {
+    margin: 20px 0;
+    font-size: 18px;
+    min-height: 27px;
+  }
+
+  .game-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px; 
+  }
+
+  .bars-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 250px;
+    gap: 5px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--bg-oxford-blue-3, #1e1e1e);
+    border-radius: 8px;
+  }
+
+  .bar {
+    width: 20px;
+    background-color: var(--text-white, #ffffff);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .skills-wrapper {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .game-container, .algo-visualizer {
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .input-area {
+      flex-direction: column;
+    }
+    .game-controls {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-end;
+    }
+  }
+</style>
+
+<script>
+  // Bug fixing game
+  const buggySnippets = [
+    { 
+      code: "function greet(name) {\n  return 'Hello, ' + name\n}",
+      fix: "function greet(name) {\n  return 'Hello, ' + name;\n}"
+    },
+    { 
+      code: "for(let i = 0; i < 10 i++) {\n  console.log(i);\n}",
+      fix: "for(let i = 0; i < 10; i++) {\n  console.log(i);\n}"
+    },
+    { 
+      code: "const sum = (a, b) => {\n  return a + b\n};",
+      fix: "const sum = (a, b) => {\n  return a + b;\n};"
+    },
+    { 
+      code: "if(x === 10 {\n  console.log('x is 10');\n}",
+      fix: "if(x === 10) {\n  console.log('x is 10');\n}"
+    },
+    { 
+      code: "const colors = ['red', 'green' 'blue'];",
+      fix: "const colors = ['red', 'green', 'blue'];"
+    },
+    { 
+      code: "let person = {\n  name: 'John',\n  age: 30\n  job: 'Developer'\n};",
+      fix: "let person = {\n  name: 'John',\n  age: 30,\n  job: 'Developer'\n};"
+    }
+  ];
+  
+  let currentBugIndex = 0;
+  
+  function loadBug() {
+    document.getElementById("buggy-code").innerText = buggySnippets[currentBugIndex].code;
+    document.getElementById("user-fix").value = "";
+    document.getElementById("feedback").innerText = "";
+  }
+  
+  function checkFix() {
+    let userFix = document.getElementById("user-fix").value;
+    let feedback = document.getElementById("feedback");
+    
+    if (userFix === buggySnippets[currentBugIndex].fix) {
+      feedback.innerText = "✅ Correct! You fixed the bug!";
+      feedback.style.color = "#4CAF50";
+    } else {
+      feedback.innerText = "❌ Try again! The bug is still there.";
+      feedback.style.color = "#F44336";
+    }
+  }
+  
+  function nextBug() {
+    currentBugIndex = (currentBugIndex + 1) % buggySnippets.length;
+    loadBug();
+  }
+  
+  // Algorithm visualizer
+  const barsContainer = document.getElementById("bars");
+  let values = [];
+  let sorting = false;
+  
+  function generateRandomArray() {
+    values = Array.from({ length: 15 }, () => Math.floor(Math.random() * 100 + 10));
+    renderBars();
+  }
+  
+  function renderBars() {
+    barsContainer.innerHTML = "";
+    values.forEach(value => {
+      const bar = document.createElement("div");
+      bar.classList.add("bar");
+      bar.style.height = `${value * 2}px`;
+      barsContainer.appendChild(bar);
+    });
+  }
+  
+  async function bubbleSort() {
+    if (sorting) return;
+    sorting = true;
+    
+    let bars = document.getElementsByClassName("bar");
+    for (let i = 0; i < values.length; i++) {
+      for (let j = 0; j < values.length - i - 1; j++) {
+        // Highlight bars being compared
+        bars[j].style.backgroundColor = "#ff5e14"; // Using site accent color
+        bars[j + 1].style.backgroundColor = "#ff5e14";
+        await new Promise(resolve => setTimeout(resolve, 150));
+        
+        if (values[j] > values[j + 1]) {
+          // Swap values
+          [values[j], values[j + 1]] = [values[j + 1], values[j]];
+          // Update UI
+          [bars[j].style.height, bars[j + 1].style.height] = 
+            [`${values[j] * 2}px`, `${values[j + 1] * 2}px`];
+        }
+        
+        // Reset colors after comparison
+        await new Promise(resolve => setTimeout(resolve, 150));
+        bars[j].style.backgroundColor = "#ffffff";
+        bars[j + 1].style.backgroundColor = "#ffffff";
+      }
+      // Mark the sorted position
+      bars[values.length - i - 1].style.backgroundColor = "#4CAF50"; // Green for sorted
+    }
+    sorting = false;
+  }
+  
+  function startBubbleSort() {
+    if (!sorting) {
+      generateRandomArray();
+      setTimeout(() => {
+        bubbleSort();
+      }, 500);
+    }
+  }
+  
+  // Initialize both components
+  document.addEventListener("DOMContentLoaded", function() {
+    loadBug();
+    generateRandomArray();
+  });
+</script>
 
       <!-- 
-        - #PORTFOLIO
+        - #PROJECT PORTFOLIO
       -->
 
-      <section class="portfolio" aria-labelledby="portfolio-label">
+      <section id="portfolio" class="portfolio" aria-labelledby="portfolio-label">
 
         <div class="title-wrapper container">
 
           <div>
-            <p class="section-subtitle" id="portfolio-label">Our Works</p>
+            <p class="section-subtitle" id="portfolio-label">My Works</p>
 
             <h2 class="h2 section-title">Portfolio</h2>
           </div>
 
-          <p class="section-text">
-            Phasellus et lacus suscipit congue nisl the volutpat magna. donec miss the drana risus tincidunt convallis
-            velit orci congue tortor eu dignissim ipsum suam non odio. Pellenta esuntion miss the imperdiet metus
-            ornare.
-          </p>
+          <section>
+            <h1>Artire. – A Global Platform for Creative Talent</h1>
+            <p>Artire connects musicians, photographers, designers, and writers with businesses seeking top creative talent. With a "Less Click to Goal" approach, it streamlines hiring, making it faster and easier.</p>
 
+            <ul>
+                <li><strong>Smart Matching:</strong> Advanced algorithms pair businesses with the best-fit artists.</li>
+                <li><strong>Showcase Work:</strong> Artists can display portfolios, past projects, and reviews.</li>
+                <li><strong>Fair Pay:</strong> Transparent, customizable compensation for creative professionals.</li>
+            </ul>
+            
+            <p>Artire empowers artists with opportunities to grow and succeed in a competitive market.</p>
+        </section>
+        
         </div>
 
         <div class="slider" data-slider>
@@ -551,8 +755,9 @@
                     <h3 class="h3 card-title">UX in Ecommerce – 5 things to avoid.</h3>
 
                     <p class="card-text">
-                      Phasellus et lacus suscipit congue nis in the miss mine one miss the drana risus in tincidunt
-                      ornare.
+                      Artire is a global freelancing platform designed to connect artists, such as musicians, photographers, graphic designers, and writers, with businesses or labels seeking creative talent. It emphasizes simplicity and efficiency through a streamlined process based on the "Less click to goal" concept. Artists can showcase their profiles, portfolios, past works, and reviews for potential employers to review and hire them. 
+
+Artire features an advanced algorithm that matches businesses with the best candidates for their requirements while ensuring artists receive fair and customizable pay. The platform aims to empower struggling artists by providing them with opportunities to grow and succeed in their careers.
                     </p>
 
                     <a href="#" class="btn has-before">
@@ -579,7 +784,7 @@
     - #FOOTER
   -->
 
-  <footer class="footer">
+  <footer id="contact" class="footer">
     <div class="container">
 
       <ul class="footer-list">
@@ -589,7 +794,7 @@
         </li>
 
         <li>
-          <a href="mailto:info@kwilliams.com" class="footer-link">info@kwilliams.com</a>
+          <a href="mailto:aritroroy404@gmail.com" class="footer-link">aritroroy404@gmail.com</a>
         </li>
 
       </ul>
@@ -601,33 +806,29 @@
         </li>
 
         <li>
-          <a href="#" class="footer-link">San Francisco — California</a>
+          <a href="#" class="footer-link">Asansol  -  West Bengal</a>
         </li>
 
       </ul>
 
       <ul class="social-list">
 
+
+
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-dribbble"></ion-icon>
+          <a href="https://github.com/officialaritro" class="social-link">
+            <ion-icon name="logo-github"></ion-icon>
           </a>
         </li>
 
         <li>
           <a href="#" class="social-link">
-            <ion-icon name="logo-instagram"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
           </a>
         </li>
 
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-skype"></ion-icon>
-          </a>
-        </li>
-
-        <li>
-          <a href="#" class="social-link">
+          <a href="https://www.linkedin.com/in/aritroroy404/" class="social-link">
             <ion-icon name="logo-linkedin"></ion-icon>
           </a>
         </li>
