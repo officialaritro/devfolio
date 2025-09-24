@@ -1,0 +1,111 @@
+import Wrapper from '@/components/wrapper';
+
+export const metadata = {
+  title: "CollabWrite - Collaborative Knowledge Sharing",
+  description:
+    "CollabWrite is an open source, community-driven knowledge-sharing platform where users can explore posts without logging in, and collaborate on content in real-time using a rich text editor, creating a living knowledge base.",
+  keywords: [
+    "collaborative editing",
+    "knowledge sharing platform",
+    "real-time editor",
+    "Appwrite project",
+    "Tiptap collaboration",
+    "open knowledge base",
+    "community-driven platform",
+    "Next.js 15 project",
+    "Notion alternative",
+    "Google Docs style editor",
+    "open learning tools",
+    "collaborative writing"
+  ],
+  openGraph: {
+    type: "website",
+    url: "https://www.shivamtaneja.com/project/collab-write",
+    images: [
+      {
+        url: "/projects/og-image-collab-write.png",
+        alt: "CollabWrite - Collaborative Knowledge Sharing | Shivam Taneja",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/projects/og-image-collab-write.png"],
+  },
+};
+
+<Wrapper>
+  # CollabWrite - Collaborative Knowledge Sharing
+
+  - [View Live Project](https://collabwrite.appwrite.network/)
+  - [View Source Code](https://github.com/shivam-taneja/CollabWrite)
+
+  <SubSection title="About The Project">
+    - CollabWrite is an open source knowledge-sharing platform where anyone can explore posts without logging in.
+    - Registered users can create, edit, and collaborate on posts in real-time using a rich text editor, similar to Google Docs-style collaboration.
+    - The feed updates automatically when new knowledge posts are added, making it a living, community-driven knowledge base.
+  </SubSection>
+
+  <SubSection title="Inspiration">
+    - The idea is inspired by creating a "Wikipedia meets Notion".
+    - I wanted to build something more open and community-driven than traditional note-taking apps.
+    - While tools like Google Docs and Notion are great, they are usually private and siloed.
+    - CollabWrite brings the best of both worlds:
+      - The openness of a public knowledge feed
+      - The power of collaborative editing
+      - The simplicity of contributing knowledge without barriers
+  </SubSection>
+
+  <SubSection title="Technologies Used">
+    ### Frontend -
+    - Next.js 15 (App Router)
+    - React 19
+    - TailwindCSS
+    - Shadcn/UI
+    - Zod
+    - React Hook Form
+
+    <br />
+
+    ### Rich Text Editor -
+    - Tiptap (for real-time collaborative editing)
+
+    <br />
+
+    ### Backend & Infra -
+    - Appwrite (Auth, Database, Realtime, Deployment)
+    - Appwrite Auth (GitHub / Google / Email login)
+
+    <br />
+
+    ### Deployment -
+    - Appwrite Sites
+  </SubSection>
+
+  <SubSection title="Features">
+    - **Open Access**: Anyone can explore posts without signing in
+    - **Real-Time Collaboration**: Multiple users can edit posts simultaneously (Google Docs style)
+    - **Rich Text Editing**: Powered by Tiptap for flexible, modern editing
+    - **Community-Driven Knowledge Base**: A feed that evolves with contributions
+    - **Authentication**: GitHub, Google, or Email login via Appwrite
+    - **Auto-Updating Feed**: New knowledge appears instantly, no refresh needed
+  </SubSection>
+
+  <SubSection title="How It Works">
+    - **Explore**: Visitors can browse posts without logging in
+    - **Sign Up**: Register with GitHub, Google, or Email
+    - **Collaborate**: Create and edit posts in real-time using the Tiptap editor
+    - **Realtime Updates**: Posts sync instantly across users via Appwrite Realtime
+    - **Knowledge Flow**: The feed automatically updates with new or edited content
+  </SubSection>
+
+  <SubSection title="Future Improvements">
+    - **Tagging & Categorization**: Organize posts into topics for easier discovery
+    - **Version History**: Track edits and allow rollback to previous versions
+    - **Community Moderation**: Upvotes, flags, and editor roles for quality control
+    - **Better Discovery**: Search and filter across the knowledge base
+    - **Integrations**: Export to Notion, Obsidian, or other knowledge tools
+  </SubSection>
+</Wrapper>
