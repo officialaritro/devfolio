@@ -6,7 +6,7 @@ const AboutMeSection = () => {
   return (
     <section>
       <div className='flex flex-col gap-2'>
-        <h1 className='text-2xl font-bold'>Hi, I&apos;m Shivam Taneja</h1>
+        <h1 className='text-2xl font-bold'>Hi, I&apos;m Aritro Roy</h1>
 
         <ul className='flex list-disc ml-4 flex-col gap-2'>
           {aboutMeContent.map((item) => (

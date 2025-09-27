@@ -28,7 +28,7 @@ export async function sendEmail(formData: FormDataWithRecaptcha) {
     }
 
     await resend.emails.send({
-      from: 'Aritro Roy <aritroroy404@gmail.com>',
+      from: 'Aritro Roy <officialaritro204@gmail.com',
       to: email,
       subject: `Thank you for your message, ${name}!`,
       react: ContactFormEmail({
@@ -42,8 +42,8 @@ export async function sendEmail(formData: FormDataWithRecaptcha) {
 
     // Send notification email to me
     await resend.emails.send({
-      from: 'Portfolio Website <aritroroy404@gmail.com>',
-      to: 'aritroroy404@gmail.com',
+      from: 'Portfolio Website Contact Form <onboarding@resend.dev>',
+      to: 'officialaritro204@gmail.com',
       subject: `New Contact Form Submission: ${subject}`,
       react: ContactFormEmail({
         name,

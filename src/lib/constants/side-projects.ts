@@ -1,50 +1,42 @@
 export const sideProjects = [
-  {
-    title: 'CollabWrite',
-    projLink: 'https://collabwrite.appwrite.network/',
-    desc: "an open source, real-time collaborative knowledge-sharing platform.",
-    descLink: "/project/collab-write/",
-    userCount: '10 users',
-    activelyWorking: true,
-  },
-  {
-    title: 'NagarIQ',
-    projLink: 'https://nagar-iq.shivamtaneja.com/',
-    desc: "an AI-powered system that understands the world around it.",
-    descLink: "/project/nagar-iq/",
-    userCount: null,
-    activelyWorking: true,
-  },
-  {
-    title: 'Tilt Bot',
-    projLink: 'https://tilt-bot.shivamtaneja.com/',
-    desc: "an AI-powered gaming roast generator for witty, non-toxic comebacks.",
-    descLink: "/project/tilt-bot/",
-    userCount: '05 users',
-    activelyWorking: false,
-  },
-  {
-    title: 'Chat Mingle',
-    projLink: 'https://chat-mingle.shivamtaneja.com/',
-    desc: "a fun, experimental chat app.",
-    descLink: "/project/chat-mingle/",
-    userCount: '19 users',
-    activelyWorking: false,
-  },
-  {
-    title: 'Circle Catcher',
-    projLink: 'https://circle-game.shivamtaneja.com/',
-    desc: "a game where you grow by eating smaller circles while avoiding larger ones.",
-    descLink: "/project/circle-catcher/",
-    userCount: '09 users',
-    activelyWorking: false,
-  },
-  {
-    title: 'Career Guide Hub (Freelance)',
-    projLink: 'https://www.saina.co.in/',
-    desc: "a web app with assessments to provide personalized career recommendations, empowering student decisions.",
-    descLink: "/project/career-guidance/",
-    userCount: null,
-    activelyWorking: false,
-  },
+{
+  title: 'AgentTuring',
+  projLink: 'https://github.com/officialaritro/mcp-math-agent',
+  desc: "An intelligent Agentic RAG system functioning as a sophisticated math tutor, with intelligent routing, vector-based retrieval using Qdrant, and sub-2s latency at scale.",
+  descLink: "/project/agentturing/",
+  userCount: null,
+  activelyWorking: true
+},
+{
+title: 'Cirrhosis Stage Prediction',
+projLink: 'https://github.com/officialaritro/cirrhosis-stage-prediction',
+desc: "A machine learning model predicting cirrhosis stages from clinical data with 92% F1-score, featuring data preprocessing, XGBoost classification, and hyperparameter optimization using Python and Scikit-learn.",
+descLink: "/project/cirrhosis-stage-prediction/",
+userCount: null,
+activelyWorking: true
+},
+{
+title: 'Automailer - Cold Emailing Automation',
+projLink: 'https://github.com/officialaritro/automailer--Cold-Emailing-Automation',
+desc: "A modern React-based platform for automating HR cold email campaigns, with contact extraction from Excel, personalized templates, scheduling, and a tracking dashboard built with TypeScript and Tailwind CSS.",
+descLink: "/project/automailer-cold-emailing-automation/",
+userCount: null,
+activelyWorking: true
+},
+{
+  title: 'OptiResume',
+  projLink: 'https://optiresumeats.streamlit.app/',
+  desc: "a cloud-native resume analysis tool with real-time PDF parsing and LLM integration.",
+  descLink: "/project/optiresume/",
+  userCount: null,
+  activelyWorking: true
+},
+{
+title: 'BitByBit',
+projLink: 'https://github.com/officialaritro/bitByBit',
+desc: "A user-friendly desktop YouTube video downloader with Tkinter GUI, supporting multiple formats, real-time progress tracking, and reliable downloads powered by yt-dlp in Python.",
+descLink: "/project/bitbybit/",
+userCount: null,
+activelyWorking: true
+}
 ];

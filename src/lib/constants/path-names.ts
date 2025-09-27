@@ -4,21 +4,20 @@ export const pathNames = {
     '/experience': 'Experience',
   },
   projects: {
-    'chat-mingle': 'Project | Chat Mingle',
-    'circle-catcher': 'Project | Circle Catcher',
-    'career-guidance': 'Project | Career Guidance',
-    'chat-bot': 'Project | Ask Shivam',
-    'tilt-bot': 'Project | Tilt Bot',
-    'nagar-iq': 'Project | Nagar IQ',
-    'collab-write': 'Project | Collab Write',
+    'agentturing': 'Project | AgentTuring',
+    'cirrhosis-stage-prediction': 'Project | Cirrhosis Stage Prediction',
+    'automailer-cold-emailing-automation': 'Project | Automailer - Cold Emailing Automation',
+    'optiresume': 'Project | OptiResume',
+    'devfolio': 'Project | Devfolio',
+    'bitbybit': 'Project | BitByBit',
   },
 };
 
-export const excludedPaths = [
-  '/auth/error',
-  '/auth/signin',
-  '/dashboard',
-  '/chat'
-];
 
-export const chatIdRegex = /^\/chat\/[a-f\d]{24}$/i;
+export const chatIdRegex = /\/chat\/[a-zA-Z0-9_-]+$/;
+
+export const excludedPaths = [
+  '/chat',
+  '/admin',
+  '/api',
+];

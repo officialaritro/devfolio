@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { sideProjects } from '@/lib/constants/side-projects';
 
-import ChatBotProject from './chat-bot-project';
+{/* import ChatBotProject from './chat-bot-project'; */}
 
 import { ExternalLink, Info } from 'lucide-react';
 import { GoDotFill } from "react-icons/go";
@@ -82,7 +82,7 @@ const SideProjectsSection = () => {
             </li>
           ))}
 
-          <ChatBotProject />
+          {/* <ChatBotProject /> */}
 
           {sideProjects.slice(1, sideProjects.length).map((item, idx) => (
             <li className='text-neutral-500 flex w-full gap-4 items-start justify-between' key={idx}>
