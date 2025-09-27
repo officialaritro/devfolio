@@ -1,10 +1,10 @@
 {
-  "name": "shivam-portfolio-website",
+  "name": "devfolio",
   "version": "0.1.0",
   "private": true,
   "author": {
-    "email": "business.shivamtaneja@gmail.com",
-    "name": "Shivam Taneja"
+    "email": "officialaritro204@gmail.com",
+    "name": "Aritro Roy"
   },
   "scripts": {
     "dev": "next dev --turbopack",

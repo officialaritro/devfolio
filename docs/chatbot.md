@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
 
 The Groq AI model generates responses based on:
 
-1. A system prompt specifying it should respond as Shivam Taneja
+1. A system prompt specifying it should respond as Aritro Roy
 2. The complete chat history for context
 3. Relevant content from the website related to the user's query
 4. The user's latest message

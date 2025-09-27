@@ -102,7 +102,7 @@ The crawler endpoint is protected using Next.js middleware that validates the re
 The crawler requires the following environment variables:
 
 ```env
-SITE_TO_CRAWL=https://www.shivamtaneja.com/sitemap.xml
+SITE_TO_CRAWL=https://aritroroy.tech/sitemap.xml
 MONGODB_URI=""
 MONGODB_DB_NAME=""
 MONGODB_COLLECTION_EMBEDDINGS=""

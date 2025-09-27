@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ["/"],
       disallow: ["/dashboard", "/auth/*", "/chat/*"]
     },
-    sitemap: 'https://www.shivamtaneja.com/sitemap.xml'
+    sitemap: 'https://aritroroy.tech/sitemap.xml'
   }
 }

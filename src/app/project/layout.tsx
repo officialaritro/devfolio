@@ -4,8 +4,8 @@ import { defaultMetadata } from '@/lib/constants/metadata';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Shivam Taneja',
-    template: '%s | Shivam Taneja',
+    default: 'Aritro Roy',
+    template: '%s | Aritro Roy',
   },
   ...defaultMetadata
 };

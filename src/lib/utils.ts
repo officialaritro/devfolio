@@ -13,7 +13,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function matchPath(pathname: string, isFirstLoad: boolean) {
   if (pathname === '/') {
-    return isFirstLoad ? "Shivam Taneja" : "<Home />";
+    return isFirstLoad ? "Aritro Roy" : "<Home />";
   }
 
   if (pathname in pathNames.common) {

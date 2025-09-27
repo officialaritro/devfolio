@@ -32,8 +32,8 @@ This is the official repository for my personal website built with Next.js 15, f
 
 1. Clone the repository
 ```bash
-git clone https://github.com/username/shivam-portfolio-website.git
-cd shivam-portfolio-website
+git clone https://github.com/username/devfolio.git
+cd devfolio
 git checkout design-v2
 ```
 
@@ -110,8 +110,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 
-Feel free to reach out to me at business.shivamtaneja@gmail.com if you have any questions or feedback.
+Feel free to reach out to me at officialaritro204@gmail.com if you have any questions or feedback.
 
 ---
 
-Built with ❤️ by Shivam Taneja
+Built with ❤️ by Aritro Roy
