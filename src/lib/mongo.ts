@@ -1,15 +1,25 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient, Db, Collection } from "mongodb";
 import { serverEnv } from "@/lib/env/server";
-
+import { ObjectId } from "mongodb";
 declare global {
-  // allow global `mongo` in dev mode
-  var mongo: {
-    client?: MongoClient;
-    db?: Db;
-    promise?: Promise<MongoClient>;
-  } | undefined;
+  interface Global {
+    _mongo?: {
+      client?: MongoClient;
+      db?: Db;
+      promise?: Promise<MongoClient>;
+    };
+  }
 }
 
+const globalForMongo = global as unknown as { _mongo?: Global["_mongo"] };
+
+if (!globalForMongo._mongo) {
+  globalForMongo._mongo = {};
+}
+
+const mongo = globalForMongo._mongo;
+
+// Core Connection
 function getMongoConfig() {
   const env = serverEnv();
   return {
@@ -28,38 +38,67 @@ export async function connectToDatabase(): Promise<Db | null> {
     return null;
   }
 
-  if (!global.mongo) {
-    global.mongo = {};
+  if (mongo.client) {
+    return mongo.db || null;
   }
 
-  // reuse existing client if available
-  if (global.mongo.client) {
-    return global.mongo.db || null;
-  }
-
-  // initialize clientPromise once
-  if (!global.mongo.promise) {
+  if (!mongo.promise) {
     const client = new MongoClient(uri);
-    global.mongo.promise = client.connect();
+    mongo.promise = client.connect();
   }
 
   try {
-    const client = await global.mongo.promise;
-    global.mongo.client = client;
-    global.mongo.db = client.db(dbName);
-    return global.mongo.db;
+    const client = await mongo.promise;
+    mongo.client = client;
+    mongo.db = client.db(dbName);
+    return mongo.db;
   } catch (err) {
     console.error("MongoDB connection failed:", err);
-    global.mongo.promise = undefined; // reset on failure
+    mongo.promise = undefined;
     return null;
   }
 }
 
 export async function closeDatabase() {
-  if (global.mongo?.client) {
-    await global.mongo.client.close();
-    global.mongo.client = undefined;
-    global.mongo.db = undefined;
-    global.mongo.promise = undefined;
+  if (mongo.client) {
+    await mongo.client.close();
+    mongo.client = undefined;
+    mongo.db = undefined;
+    mongo.promise = undefined;
   }
+}
+
+//Helper Exports for Routes
+export async function getDbClient() {
+  return connectToDatabase();
+}
+
+export async function getChatsCollection(): Promise<Collection | null> {
+  const db = await connectToDatabase();
+  return db?.collection("chats") || null;
+}
+
+export async function getEmbeddingsCollection(): Promise<Collection | null> {
+  const db = await connectToDatabase();
+  return db?.collection("embeddings") || null;
+}
+
+export async function getCrawlingMetaDataCollection(): Promise<
+  Collection | null
+> {
+  const db = await connectToDatabase();
+  return db?.collection("crawling_metadata") || null;
+}
+
+export async function appendToConversation(
+  chatId: string,
+  message: any
+) {
+  const collection = await getChatsCollection();
+  if (!collection) return null;
+
+  return collection.updateOne(
+    { _id: new ObjectId(chatId) },
+    { $push: { messages: message } }
+  );
 }
