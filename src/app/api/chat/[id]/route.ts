@@ -1,21 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getChatsCollection } from "@/lib/mongo";
-
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
+  const { id } = await params;
 
-  try {
-    const chatsCollection = await getChatsCollection()
-    const chat = await chatsCollection.findOne({ chatId: id });
-
-    if (!chat) {
-      return NextResponse.json({ error: "Chat not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ chat });
-  } catch (error) {
-    console.error("Failed to get chat: ", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-  }
+  // Return disabled response
+  return NextResponse.json(
+    { 
+      error: "Chat functionality is currently disabled",
+      message: "This feature will be available when the chat system is enabled",
+      chatId: id 
+    }, 
+    { status: 503 } // Service Unavailable
+  );
 }
