@@ -1,87 +1,65 @@
-import { ClientSession, MongoClient, UpdateFilter } from "mongodb";
+import { MongoClient, Db } from "mongodb";
+import { serverEnv } from "@/lib/env/server";
 
-import { ChatDocument, ConversationMessage } from "@/types/chats.types";
-import { CrawlingMetaData } from "@/types/crawl.types";
+declare global {
+  // allow global `mongo` in dev mode
+  var mongo: {
+    client?: MongoClient;
+    db?: Db;
+    promise?: Promise<MongoClient>;
+  } | undefined;
+}
 
-import { serverEnv } from "./env/server";
+function getMongoConfig() {
+  const env = serverEnv();
+  return {
+    uri: env.MONGODB_URI,
+    dbName: env.MONGODB_DB_NAME,
+  };
+}
 
-let client: MongoClient | null = null
-let db: ReturnType<MongoClient["db"]> | null = null;
+export async function connectToDatabase(): Promise<Db | null> {
+  const { uri, dbName } = getMongoConfig();
 
-async function connectToDatabase() {
-  if (!client) {
-    client = new MongoClient(serverEnv().MONGODB_URI);
-    await client.connect();
-    db = client.db(serverEnv().MONGODB_DB_NAME);
+  if (!uri) {
+    console.warn(
+      "No MONGODB_URI provided - skipping DB connection (feature disabled)"
+    );
+    return null;
   }
 
-  return db!;
-}
-
-async function getDbClient(): Promise<MongoClient> {
-  if (!client) {
-    client = new MongoClient(serverEnv().MONGODB_URI);
-    await client.connect();
-    db = client.db(serverEnv().MONGODB_DB_NAME);
+  if (!global.mongo) {
+    global.mongo = {};
   }
 
-  return client;
-}
-
-async function getChatsCollection() {
-  const db = await connectToDatabase();
-  return db.collection<ChatDocument>(serverEnv().MONGODB_COLLECTION_CHATS);
-}
-
-async function getEmbeddingsCollection() {
-  const db = await connectToDatabase();
-  return db.collection(serverEnv().MONGODB_COLLECTION_EMBEDDINGS);
-}
-
-async function getCrawlingMetaDataCollection() {
-  const db = await connectToDatabase();
-  return db.collection<CrawlingMetaData>(serverEnv().MONGODB_COLLECTION_CRAWLING_META);
-}
-
-async function appendToConversation(
-  sessionId: string,
-  message: string,
-  title: string | null,
-  type: 'bot' | 'user',
-  mongoSession?: ClientSession
-) {
-  const chatsCollection = await getChatsCollection();
-
-  const newMessage: ConversationMessage = {
-    message,
-    type,
-    createdAt: new Date().toString(),
-  };
-
-  const setOnInsert: Partial<ChatDocument> = {
-    createdAt: new Date().toString(),
-  };
-
-  if (title !== null) {
-    setOnInsert.title = title;
+  // reuse existing client if available
+  if (global.mongo.client) {
+    return global.mongo.db || null;
   }
 
-  const update: UpdateFilter<ChatDocument> = {
-    $setOnInsert: setOnInsert,
-    $push: {
-      conversation: newMessage,
-    },
-  };
+  // initialize clientPromise once
+  if (!global.mongo.promise) {
+    const client = new MongoClient(uri);
+    global.mongo.promise = client.connect();
+  }
 
-  await chatsCollection.updateOne(
-    { chatId: sessionId },
-    update,
-    { upsert: true, session: mongoSession }
-  );
+  try {
+    const client = await global.mongo.promise;
+    global.mongo.client = client;
+    global.mongo.db = client.db(dbName);
+    return global.mongo.db;
+  } catch (err) {
+    console.error("MongoDB connection failed:", err);
+    global.mongo.promise = undefined; // reset on failure
+    return null;
+  }
 }
 
-export {
-  appendToConversation,
-  connectToDatabase, getChatsCollection,
-  getCrawlingMetaDataCollection, getDbClient, getEmbeddingsCollection
-};
+export async function closeDatabase() {
+  if (global.mongo?.client) {
+    await global.mongo.client.close();
+    global.mongo.client = undefined;
+    global.mongo.db = undefined;
+    global.mongo.promise = undefined;
+  }
+}
