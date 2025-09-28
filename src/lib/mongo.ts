@@ -2,7 +2,7 @@ import { MongoClient, Db, Collection } from "mongodb";
 import { serverEnv } from "@/lib/env/server";
 
 declare global {
-  // Fixed: Changed 'var' to 'let' to resolve ESLint error
+  // eslint-disable-next-line no-var
   var _mongo: {
     client?: MongoClient;
     db?: Db;
@@ -99,12 +99,7 @@ export async function getCrawlingMetaDataCollection(): Promise<Collection> {
  * Append message to conversation - DISABLED
  * Throws error to prevent usage
  */
-export async function appendToConversation(
-  chatId: string,
-  message: string,
-  userId: string | null,
-  role: "user" | "bot"
-): Promise<void> {
+export async function appendToConversation(): Promise<void> {
   throw new Error("Chat functionality is currently disabled. Enable MongoDB connection to use this feature.");
 }
 

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json({
@@ -7,7 +7,7 @@ export async function GET() {
   }, { status: 503 });
 }
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   return NextResponse.json({
     error: "Chat functionality is currently disabled", 
     message: "Enable MongoDB connection to send messages"
