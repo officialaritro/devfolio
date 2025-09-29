@@ -8,7 +8,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   const project = sideProjects.find(p => p.slug === slug);
 
   if (!project) {
-    notFound();  // Built-in 404 if no match
+    notFound();
   }
 
   return (
@@ -16,13 +16,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
       <Link href="/" className="text-blue-500 hover:underline">← Back to Home</Link>
       <h1 className="text-3xl font-bold mt-6">{project.title}</h1>
       {project.image && (
-        <div className="mt-4 relative w-full h-64 md:h-96">  // Responsive container
+        <div className="mt-4 relative w-full h-64 md:h-96">
           <Image 
             src={project.image} 
             alt={project.title} 
-            fill  // Fills container
-            className="object-cover rounded-lg" 
-            priority={true}  
+            fill
+            className="object-cover rounded-lg"
+            priority={true}
           />
         </div>
       )}
