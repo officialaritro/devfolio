@@ -2,7 +2,7 @@ export const sideProjects = [
 {
   title: 'AgentTuring',
   projLink: 'https://github.com/officialaritro/mcp-math-agent',
-  desc: "An intelligent Agentic RAG system functioning as a sophisticated math tutor, with intelligent routing, vector-based retrieval using Qdrant, and sub-2s latency at scale.",
+  desc: "A FastAPI-based agentic API routing system that routes user requests across vector search and structured data stores, with async request handling and connection management for concurrent users, improving semantic query accuracy by 25%.",
   descLink: "/project/agentturing/",
   slug: "agentturing",
   image: "/projects/agentturing.png",
