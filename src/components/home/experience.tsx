@@ -27,9 +27,11 @@ const ExperienceSection = () => {
                     </p>
                   </div>
 
-                  <p className='text-neutral-400 break-words'>
-                    {item.desc}
-                  </p>
+                  <ul className='text-neutral-400 break-words list-disc pl-4 flex flex-col gap-1.5'>
+                    {item.highlights.map((highlight, i) => (
+                      <li key={i}>{highlight}</li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div>
