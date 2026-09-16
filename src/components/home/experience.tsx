@@ -3,6 +3,8 @@ import React from 'react'
 import { experiences } from '@/lib/constants/experience'
 import { CircleDot } from 'lucide-react'
 
+import Pill from '../ui/pill'
+
 const ExperienceSection = () => {
   return (
     <section>
@@ -32,6 +34,12 @@ const ExperienceSection = () => {
                       <li key={i}>{highlight}</li>
                     ))}
                   </ul>
+
+                  <div className='flex flex-wrap gap-2 pl-4'>
+                    {item.stack.map((tech) => (
+                      <Pill key={tech}>{tech}</Pill>
+                    ))}
+                  </div>
                 </div>
 
                 <div>

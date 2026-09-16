@@ -9,6 +9,7 @@ import { delays } from '@/lib/constants/delays';
 
 import { useIsFirstLoad } from '@/store/loading-store';
 
+import Footer from './footer';
 import Nav from './nav';
 
 import { TooltipProvider } from './ui/tooltip';
@@ -51,6 +52,7 @@ const Wrapper = ({
       <main ref={wrapperRef} className="mx-auto max-w-3xl py-12 flex flex-col gap-6 px-4 text-white">
         <Nav />
         {children}
+        <Footer />
       </main>
     </TooltipProvider>
   )

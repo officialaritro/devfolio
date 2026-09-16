@@ -2,8 +2,9 @@ import { Suspense } from 'react';
 import AboutMeSection from '@/components/home/about-me';
 import ExperienceSection from '@/components/home/experience';
 import GithubCalendar from '@/components/home/github-calendar';
-import OpenSourceContributionSection from '@/components/home/open-source-contribution';
+import ImpactSection from '@/components/home/impact';
 import SideProjectsSection from '@/components/home/side-projects';
+import SkillsSection from '@/components/home/skills';
 import Wrapper from '@/components/wrapper';
 
 function GithubCalendarSkeleton() {
@@ -25,9 +26,10 @@ export default function Home() {
       <Suspense fallback={<GithubCalendarSkeleton />}>
         <GithubCalendar username="officialaritro" />
       </Suspense>
+      <SkillsSection />
       <ExperienceSection />
       <SideProjectsSection />
-      <OpenSourceContributionSection />
+      <ImpactSection />
     </Wrapper>
   );
 }

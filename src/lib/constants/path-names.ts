@@ -2,14 +2,15 @@ export const pathNames = {
   common: {
     '/contact': 'Contact',
     '/experience': 'Experience',
+    '/now': 'Now',
+    '/uses': 'Uses',
   },
   projects: {
+    'voice-rag-pipeline': 'Project | Voice-Enabled RAG Pipeline',
     'agentturing': 'Project | AgentTuring',
-    'cirrhosis-stage-prediction': 'Project | Cirrhosis Stage Prediction',
-    'automailer-cold-emailing-automation': 'Project | Automailer - Cold Emailing Automation',
+    'prospect-pilot': 'Project | Prospect Pilot',
     'optiresume': 'Project | OptiResume',
-    'devfolio': 'Project | Devfolio',
-    'bitbybit': 'Project | BitByBit',
+    'courtscraper': 'Project | CourtScraper',
   },
 };
 

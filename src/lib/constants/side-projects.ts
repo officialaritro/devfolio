@@ -1,8 +1,39 @@
-export const sideProjects = [
+export interface SideProject {
+  title: string;
+  projLink: string;
+  githubLink?: string;
+  desc: string;
+  descLink: string;
+  slug: string;
+  image: string | null;
+  userCount: number | null;
+  activelyWorking: boolean;
+  deepDive?: {
+    heading: string;
+    body: string;
+  };
+}
+
+export const sideProjects: SideProject[] = [
+{
+  title: 'Voice-Enabled RAG Pipeline with Measured Guardrails',
+  projLink: 'http://ragingoa.duckdns.org/',
+  githubLink: 'https://github.com/officialaritro/hhgoa-rag',
+  desc: "A live voice-to-answer RAG service over a 99K-passage corpus (ElevenLabs STT -> FAISS -> cross-encoder rerank -> Claude) on AWS EC2, holding a P50 of 96ms against a 200ms budget. Cross-encoder reranking lifted recall@5 from 0.848 to 0.916, with per-sentence groundedness guards catching 100% of ungrounded answers at zero false refusals.",
+  descLink: "/project/voice-rag-pipeline/",
+  slug: "voice-rag-pipeline",
+  image: null,
+  userCount: null,
+  activelyWorking: true,
+  deepDive: {
+    heading: "Why reranking, not chunking, was the real lever",
+    body: "The obvious place to spend effort on a RAG pipeline is chunking - so that's where I started, benchmarking 8 chunking strategies against a 99K-passage corpus. None of them moved the needle. Retrieval quality was gated by ranking, not segmentation, so I ran BM25/RRF hybrid retrieval and cross-encoder reranking through the same benchmark harness, scoring every configuration with paired bootstrap 95% confidence intervals over 500 labelled queries instead of a single point estimate. Cross-encoder reranking was the one change that was statistically significant: recall@5 moved from 0.848 to 0.916. That result set the shape of the rest of the system - a lightweight first-pass retriever feeding a heavier reranker, with per-sentence groundedness guards on the output layer catching 100% of ungrounded answers at zero false refusals. The latency budget stayed intact throughout: removing a redundant re-embedding step cut that stage from 111ms to 12ms, holding the full retrieval-to-answer path to a P50 of 96ms against a 200ms budget.",
+  },
+},
 {
   title: 'AgentTuring',
   projLink: 'https://github.com/officialaritro/mcp-math-agent',
-  desc: "A FastAPI-based agentic API routing system that routes user requests across vector search and structured data stores, with async request handling and connection management for concurrent users, improving semantic query accuracy by 25%.",
+  desc: "A FastAPI query router dispatching requests across Qdrant vector and structured data stores, with tool-use agentic workflows and async concurrency for multi-user workloads, improving semantic query accuracy 25% over a keyword baseline.",
   descLink: "/project/agentturing/",
   slug: "agentturing",
   image: "/projects/agentturing.png",
@@ -10,24 +41,14 @@ export const sideProjects = [
   activelyWorking: true
 },
 {
-title: 'Cirrhosis Stage Prediction',
-projLink: 'https://github.com/officialaritro/cirrhosis-stage-prediction',
-desc: "A machine learning model predicting cirrhosis stages from clinical data with 92% F1-score, featuring data preprocessing, XGBoost classification, and hyperparameter optimization using Python and Scikit-learn.",
-descLink: "/project/cirrhosis-stage-prediction/",
-slug: "cirrhosis-stage-prediction",
-image: "/projects/cirrhosis-stage-prediction.png",
-userCount: null,
-activelyWorking: true
-},
-{
-title: 'Automailer - Cold Emailing Automation',
-projLink: 'https://github.com/officialaritro/automailer--Cold-Emailing-Automation',
-desc: "A modern React-based platform for automating HR cold email campaigns, with contact extraction from Excel, personalized templates, scheduling, and a tracking dashboard built with TypeScript and Tailwind CSS.",
-descLink: "/project/automailer-cold-emailing-automation/",
-slug: "automailer-cold-emailing-automation",
-image: "/projects/automailer.png",
-userCount: null,
-activelyWorking: true
+  title: 'Prospect Pilot - Cold Email Automation',
+  projLink: 'https://github.com/officialaritro/prospect-pilot',
+  desc: "An AI-powered cold email platform for automated outreach campaigns, with contact extraction, personalized templating, scheduling, and a response-tracking dashboard.",
+  descLink: "/project/prospect-pilot/",
+  slug: "prospect-pilot",
+  image: null,
+  userCount: null,
+  activelyWorking: true
 },
 {
   title: 'OptiResume',
@@ -40,13 +61,13 @@ activelyWorking: true
   activelyWorking: true
 },
 {
-title: 'BitByBit',
-projLink: 'https://github.com/officialaritro/bitByBit',
-desc: "A user-friendly desktop YouTube video downloader with Tkinter GUI, supporting multiple formats, real-time progress tracking, and reliable downloads powered by yt-dlp in Python.",
-descLink: "/project/bitbybit/",
-slug: "bitbybit",
-image: "/projects/bitBybit.png",
-userCount: null,
-activelyWorking: true
+  title: 'CourtScraper',
+  projLink: 'https://github.com/officialaritro/CourtScraper',
+  desc: "A Python scraper for extracting structured case data from public court records, built for reliable, repeatable data collection at scale.",
+  descLink: "/project/courtscraper/",
+  slug: "courtscraper",
+  image: null,
+  userCount: null,
+  activelyWorking: true
 }
 ];

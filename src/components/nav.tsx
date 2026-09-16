@@ -9,6 +9,7 @@ import { navItems } from '@/lib/constants/nav-items';
 import { socialItems } from '@/lib/constants/social-items';
 
 import { cn } from '@/lib/utils';
+import ResumeViewer from './resume-viewer';
 import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
@@ -32,6 +33,8 @@ const Nav = () => {
               </Button>
             </Link>
           ))}
+
+          <ResumeViewer className="bg-zinc-800 border-none outline-none md:px-4 px-2" />
         </div>
 
         <div className='flex gap-4'>
