@@ -3,6 +3,7 @@ import AboutMeSection from '@/components/home/about-me';
 import ExperienceSection from '@/components/home/experience';
 import GithubCalendar from '@/components/home/github-calendar';
 import ImpactSection from '@/components/home/impact';
+import OpenSourceSection from '@/components/home/open-source';
 import SideProjectsSection from '@/components/home/side-projects';
 import SkillsSection from '@/components/home/skills';
 import Wrapper from '@/components/wrapper';
@@ -26,6 +27,7 @@ export default function Home() {
       <Suspense fallback={<GithubCalendarSkeleton />}>
         <GithubCalendar username="officialaritro" />
       </Suspense>
+      <OpenSourceSection />
       <SkillsSection />
       <ExperienceSection />
       <SideProjectsSection />

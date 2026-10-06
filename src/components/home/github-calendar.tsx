@@ -50,7 +50,7 @@ export default async function GithubCalendar({ username }: { username: string })
   const monthLabels = buildMonthLabels(calendar.weeks);
 
   return (
-    <section>
+    <section id='github-activity'>
       <div className='flex flex-col gap-3'>
         <div className='flex flex-col gap-0.5'>
           <h3 className='text-xl font-bold'>GitHub Activity</h3>

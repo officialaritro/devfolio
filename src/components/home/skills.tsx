@@ -6,7 +6,7 @@ import Pill from '../ui/pill'
 
 const SkillsSection = () => {
   return (
-    <section>
+    <section id='skills'>
       <div className='flex flex-col gap-3'>
         <h3 className='text-xl font-bold'>Skills</h3>
 

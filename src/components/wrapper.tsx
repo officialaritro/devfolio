@@ -11,6 +11,8 @@ import { useIsFirstLoad } from '@/store/loading-store';
 
 import Footer from './footer';
 import Nav from './nav';
+import SignatureLogo from './signature-logo';
+import Toc from './toc';
 
 import { TooltipProvider } from './ui/tooltip';
 
@@ -35,10 +37,14 @@ const Wrapper = ({
       y: 110,
       delay: isFirstLoad ? delays['pre-loader-first-load'] : delays['pre-loader'],
     });
+
+    t1.from('main > section', { opacity: 0, y: 16, stagger: 0.08, duration: 0.5, ease: 'power2.out' }, '<0.15');
   }, { scope: wrapperRef });
 
   return (
     <TooltipProvider>
+      <SignatureLogo delay={(isFirstLoad ? delays['pre-loader-first-load'] : delays['pre-loader']) + 0.3} />
+      <Toc />
       {/* Disabled chatbot provider and component */}
       {/* 
         <ChatbotHighlightProvider>

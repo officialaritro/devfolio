@@ -3,6 +3,7 @@ export const pathNames = {
     '/contact': 'Contact',
     '/experience': 'Experience',
     '/now': 'Now',
+    '/projects': 'Projects',
     '/uses': 'Uses',
   },
   projects: {
