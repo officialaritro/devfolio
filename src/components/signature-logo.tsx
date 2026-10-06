@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import Link from 'next/link';
 
 // Single-stroke "ar" monogram: one continuous pen path, so it draws without lifting.
@@ -6,20 +10,52 @@ const STROKE = 'M41.79 12.96C41.58 12.72 42.19 11.79 40.5 11.56C38.8 11.32 34.59
 // Seconds the whole signature takes to draw.
 const DRAW_SECONDS = 1.8;
 
-/** Handwritten signature logo, drawn in one stroke after `delay` seconds. */
+// After drawing, the signature rests for a random time in this range, then writes itself again.
+const MIN_REST_SECONDS = 8;
+const MAX_REST_SECONDS = 20;
+const FADE_SECONDS = 0.4;
+
+const randomRestMs = () => (MIN_REST_SECONDS + Math.random() * (MAX_REST_SECONDS - MIN_REST_SECONDS)) * 1000;
+
+/** Handwritten signature logo: draws in one stroke, then rewrites itself at random intervals. */
 const SignatureLogo = ({ delay = 0 }: { delay?: number }) => {
+  const [run, setRun] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const firstDrawMs = (delay + DRAW_SECONDS) * 1000;
+    const fadeTimer = setTimeout(() => setFading(true), (run === 0 ? firstDrawMs : DRAW_SECONDS * 1000) + randomRestMs());
+    return () => clearTimeout(fadeTimer);
+  }, [run, delay]);
+
+  useEffect(() => {
+    if (!fading) return;
+
+    const redrawTimer = setTimeout(() => {
+      setFading(false);
+      setRun((n) => n + 1);
+    }, FADE_SECONDS * 1000);
+    return () => clearTimeout(redrawTimer);
+  }, [fading]);
+
   return (
     <Link
       href='/'
       aria-label='Aritro Roy, home'
       className='fixed left-8 top-8 z-10 hidden xl:block'
     >
-      <svg viewBox='-3 -3 106 53.96' className='h-10 w-auto text-white' fill='none' stroke='currentColor' strokeWidth={2.2} strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+      <svg style={{ opacity: fading ? 0 : 1, transition: `opacity ${FADE_SECONDS}s ease-out` }} viewBox='-3 -3 106 53.96' className='h-10 w-auto text-white' fill='none' stroke='currentColor' strokeWidth={2.2} strokeLinecap='round' strokeLinejoin='round' aria-hidden>
         <path
+          key={run}
           d={STROKE}
           pathLength={1}
           className='signature-stroke'
-          style={{ animationDelay: `${delay}s`, animationDuration: `${DRAW_SECONDS}s` }}
+          style={{
+            animationDelay: `${run === 0 ? delay : 0}s`,
+            animationDuration: `${DRAW_SECONDS}s`,
+          }}
         />
       </svg>
     </Link>
