@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { defaultMetadata } from "@/lib/constants/metadata";
+import { SITE_URL } from "@/lib/constants/site";
 
 import GrainyFilter from "@/components/grainy-filter";
 import SmoothScroll from "@/components/smooth-scroll";
@@ -21,6 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   ...defaultMetadata,
+  metadataBase: new URL(SITE_URL),
   title: "Aritro Roy - Full Stack and AI/ML Developer | Portfolio",
   description: "Welcome to Aritro's portfolio. Explore my projects, skills, and journey as a full-stack developer passionate about building innovative digital experiences.",
   openGraph: {

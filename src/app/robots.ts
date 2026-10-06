@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/constants/site";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ["/"],
       disallow: ["/dashboard", "/auth/*", "/chat/*"]
     },
-    sitemap: 'https://aritroroy.tech/sitemap.xml'
+    sitemap: `${SITE_URL}/sitemap.xml`
   }
 }
