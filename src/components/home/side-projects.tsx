@@ -12,7 +12,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 const SideProjectsSection = () => {
   return (
-    <section>
+    <section id='side-projects'>
       <div className='flex flex-col gap-2'>
         <h3 className='text-xl font-bold'>Side Projects</h3>
 

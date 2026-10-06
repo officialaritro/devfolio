@@ -7,7 +7,7 @@ import Pill from '../ui/pill'
 
 const ExperienceSection = () => {
   return (
-    <section>
+    <section id='experience'>
       <div className='flex flex-col gap-2'>
         <h3 className='text-xl font-bold'>Experience</h3>
 

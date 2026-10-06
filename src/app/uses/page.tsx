@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { usesGroups } from '@/lib/constants/uses';
+import { usesSections } from '@/lib/constants/uses';
 import { defaultMetadata } from '@/lib/constants/metadata';
 
 import Wrapper from '@/components/wrapper';
@@ -32,17 +32,26 @@ const UsesPage = () => {
         </div>
       </section>
 
-      <section>
-        <div className='flex flex-col gap-5'>
-          {usesGroups.map((group) => (
-            <div className='flex flex-col gap-2.5' key={group.category}>
-              <p className='text-sm text-neutral-500'>{group.category}</p>
+      {usesSections.map((section) => (
+        <section
+          id={section.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+          data-toc-level={section.level}
+          key={section.title}
+        >
+          <div className='flex flex-col gap-2.5'>
+            <h3 className={section.level === 0 ? 'text-xl font-bold' : 'text-sm text-neutral-500'}>{section.title}</h3>
 
+            {section.items.length > 0 && (
               <div className='flex flex-col gap-2.5'>
-                {group.items.map((item) => {
+                {section.items.map((item) => {
                   const content = (
                     <>
-                      <item.icon className='h-4 w-4 text-neutral-400 shrink-0' />
+                      {item.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.image} alt='' className='h-[18px] w-[18px] -mx-px shrink-0 rounded-[3px] object-contain' />
+                      ) : item.icon ? (
+                        <item.icon className='h-4 w-4 text-neutral-400 shrink-0' />
+                      ) : null}
                       <span className='text-white'>{item.name}</span>
                       {item.note && (
                         <span className='text-neutral-500'>{"- "}{item.note}</span>
@@ -50,7 +59,7 @@ const UsesPage = () => {
                     </>
                   );
 
-                  return 'link' in item && item.link ? (
+                  return item.link ? (
                     <Link
                       href={item.link}
                       target='_blank'
@@ -66,10 +75,10 @@ const UsesPage = () => {
                   );
                 })}
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            )}
+          </div>
+        </section>
+      ))}
     </Wrapper>
   )
 }

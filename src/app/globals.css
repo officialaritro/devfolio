@@ -128,3 +128,25 @@ body:before {
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+.signature-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation-name: signature-draw;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+@keyframes signature-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signature-stroke {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}

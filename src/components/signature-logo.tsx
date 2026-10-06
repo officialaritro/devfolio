@@ -1,0 +1,29 @@
+import Link from 'next/link';
+
+// Single-stroke "ar" monogram: one continuous pen path, so it draws without lifting.
+const STROKE = 'M41.79 12.96C41.58 12.72 42.19 11.79 40.5 11.56C38.8 11.32 34.59 11.11 31.64 11.56C28.69 12.01 26.3 12.54 22.79 14.25C19.27 15.96 14.22 18.63 10.54 21.81C6.86 25 2.44 29.86 0.68 33.37C-1.08 36.88 -0.68 40.43 0 42.86C0.68 45.29 2.38 47.79 4.76 47.96C7.14 48.13 10.78 46.15 14.29 43.88C17.8 41.61 22.07 37.69 25.81 34.34C29.55 30.99 34.56 26.08 36.72 23.76C38.88 21.44 39.16 18.59 38.77 20.41C38.37 22.23 35.3 30.87 34.34 34.67C33.39 38.46 32.76 40.98 33.05 43.2C33.33 45.41 34.49 47.39 36.07 47.96C37.65 48.53 40.12 47.68 42.55 46.6C44.98 45.52 48.38 43.3 50.65 41.49C52.92 39.68 54.55 37.62 56.16 35.75C57.76 33.87 59.58 31.16 60.26 30.24C61.39 28.37 64 24.05 67.34 19.01C70.68 13.97 80.01 1.87 80.24 0C80.46 -1.87 70.63 6.01 68.7 7.78C66.78 9.54 68.48 9.95 68.7 10.58C68.93 11.21 66.28 11.34 70.08 11.56C73.87 11.77 89.94 9.32 91.47 11.88C93 14.43 82.44 22.35 79.27 26.89C76.1 31.43 73.3 35.64 72.45 39.09C71.6 42.55 72.27 46.32 74.15 47.62C76.02 48.93 80.12 48.91 83.69 46.93C87.26 44.95 92.85 38.53 95.57 35.75C98.29 32.96 99.26 31.16 100 30.24';
+
+// Seconds the whole signature takes to draw.
+const DRAW_SECONDS = 1.8;
+
+/** Handwritten signature logo, drawn in one stroke after `delay` seconds. */
+const SignatureLogo = ({ delay = 0 }: { delay?: number }) => {
+  return (
+    <Link
+      href='/'
+      aria-label='Aritro Roy, home'
+      className='fixed left-8 top-8 z-10 hidden xl:block'
+    >
+      <svg viewBox='-3 -3 106 53.96' className='h-10 w-auto text-white' fill='none' stroke='currentColor' strokeWidth={2.2} strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+        <path
+          d={STROKE}
+          pathLength={1}
+          className='signature-stroke'
+          style={{ animationDelay: `${delay}s`, animationDuration: `${DRAW_SECONDS}s` }}
+        />
+      </svg>
+    </Link>
+  );
+};
+
+export default SignatureLogo;

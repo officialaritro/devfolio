@@ -4,7 +4,7 @@ import { impactStats } from '@/lib/constants/impact'
 
 const ImpactSection = () => {
   return (
-    <section>
+    <section id='impact'>
       <div className='flex flex-col gap-3'>
         <h3 className='text-xl font-bold'>Impact</h3>
 
